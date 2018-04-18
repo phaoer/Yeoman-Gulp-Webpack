@@ -1,24 +1,25 @@
 # generator-xy v1.0.0
 前端工程化架构，优化工作流，提升开发效率**Create By Pwh**
-##一. 前言
+
+#一. 前言
 >Yeoman：前端脚手架，快速搭建前端开发环境，优化工作流~
 Gulp：工程化构建工具，基于task来处理任务
 Webpack：最常见的前端构建工具，类似与gulp，但不如gulp灵活，专注于代码打包编译
 
 OK，主人公们介绍完了，该篇主要说明三个工具的基本用法，安装配置自己解决。
 
-##二. Yeoman
+#二. Yeoman
 >Q:
 i.在写东西的时候经常会遇到一些重复性的操作和代码，苦于Ctrl+c
 ii.人数较多的前端团队10个人拥有十种代码风格，十种项目结构，后期维护及其繁琐
 
 ——使用Yeoman 达到One Code Style One Directory Structure
 
-####1.安装:
+#1.安装:
 
     $ cnpm install -g yo
 
-####2.使用：
+#2.使用：
     yeoman 提供很多generator，可以直接使用
 
     $ mkdir project-name
@@ -27,7 +28,7 @@ ii.人数较多的前端团队10个人拥有十种代码风格，十种项目结
     
 按照提示选择需要的模板就行了，这里主要说一说怎么私人订制~~~嘻嘻
 
-####3.创建自己的generator
+#3.创建自己的generator
 yeoman官方提供了generator-generator 来帮助我们自定义生成器，良心啊~~~
 
     $ cnpm install -g generator-generator
@@ -163,12 +164,12 @@ writing方法用来书写创建工程文件的步骤
 
 然后你就可以开始编码了，so easy今后所有这种类型的项目一个命令几秒钟就可以开始愉快的编码，而且代码风格统一~~~
 
-##三.  Gulp+Webpack
+#三.  Gulp+Webpack
 >这里把Gulp和Webpack放到一起来说。
 博主最早是只用了webpack来构建自己的项目，后来加入Gulp对其进行整合，发现配合食用，口感更佳呀
 核心依然是plugin
 
-####!Webpack出口文件即Gulp入口文件
+#!Webpack出口文件即Gulp入口文件
 
 这里也只是讲如何写一个初略的gulpfile.js
 
@@ -181,7 +182,7 @@ iii. 把处理后的流再通过pipe方法导入到gulp.dest()中，最后把流
 项目结构
      ![4.png](https://upload-images.jianshu.io/upload_images/7003250-b2ebfec4ee375661.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####gulpfile.js
+#gulpfile.js
 
     //加载外挂：自动瞄准，无后座，锁血，大挪移.......~~~
     var gulp = require('gulp'),
@@ -253,11 +254,11 @@ iii. 把处理后的流再通过pipe方法导入到gulp.dest()中，最后把流
 
     });
 
-#####1.插件的话按需自取，这里我用的插件是包含了处理所有文件的。可以酌情增减
-#####2.gulp.task第一个参数为任务名，gulp task-name 即可执行对应的任务，这里需要解释的就是对于js的处理。刚才说过webpack的出口文件就是gulp的入口文件，这里我们用到了gulp-webpack包来优化。
-#####3.在默认任务这里执行编译之前调用gulp.clean清空上一次的编译结果
-#####4.这里使用了livereload插件，需要配置Chrome（美中不足，显然没有webpack-dev-server实在啊）
-#####5.运行
+#1.插件的话按需自取，这里我用的插件是包含了处理所有文件的。可以酌情增减
+#2.gulp.task第一个参数为任务名，gulp task-name 即可执行对应的任务，这里需要解释的就是对于js的处理。刚才说过webpack的出口文件就是gulp的入口文件，这里我们用到了gulp-webpack包来优化。
+#3.在默认任务这里执行编译之前调用gulp.clean清空上一次的编译结果
+#4.这里使用了livereload插件，需要配置Chrome（美中不足，显然没有webpack-dev-server实在啊）
+#5.运行
      
      $ gulp
      $ gulp watch
